@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notícias Brasil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #1a237e;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    #search {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: none;
+    }
+
+    main {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+    }
+
+    .card-content p {
+      color: #555;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #1a237e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .help-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1a237e;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .help-box {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Notícias Brasil</h1>
+    <input id="search" type="text" placeholder="Buscar...">
+  </header>
+
+  <main id="news-container">
+    <!-- Notícias simuladas -->
+  </main>
+
+  <div class="help-box" id="help-box">
+    <p>Bem-vindo ao seu site de notícias! Aqui você pode exibir conteúdos atualizados automaticamente. Em breve você poderá integrar um sistema real de coleta de dados (scraper).</p>
+  </div>
+  <button class="help-btn" onclick="toggleHelp()">Ajuda</button>
+
+  <script>
+    const noticias = [
+      {
+        titulo: "Brasil avança na produção de energia renovável",
+        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/energia_renovavel.jpg",
+        resumo: "Investimentos em eólica e solar batem recorde em 2025.",
+        link: "#",
+        data: "05/04/2025"
+      },
+      {
+        titulo: "Educação tecnológica cresce nas escolas públicas",
+        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/educacao_tecnologica.jpg",
+        resumo: "Governo amplia acesso a laboratórios e internet de alta velocidade.",
+        link: "#",
+        data: "04/04/2025"
+      },
+      {
+        titulo: "Turismo sustentável atrai visitantes ao Norte do país",
+        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/turismo_norte.jpg",
+        resumo: "Destinos ecológicos e preservação ambiental ganham destaque.",
+        link: "#",
+        data: "03/04/2025"
+      }
+    ];
+
+    const container = document.getElementById("news-container");
+
+    noticias.forEach(noticia => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${noticia.imagem}" alt="${noticia.titulo}">
+        <div class="card-content">
+          <h3>${noticia.titulo}</h3>
+          <p><small>${noticia.data}</small></p>
+          <p>${noticia.resumo}</p>
+          <a class="read-more" href="${noticia.link}">Leia mais →</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    function toggleHelp() {
+      const help = document.getElementById("help-box");
+      help.style.display = help.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
