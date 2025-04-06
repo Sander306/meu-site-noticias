@@ -1,173 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notícias Brasil</title>
+  <meta charset="UTF-8">
+  <title>Notícias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resumo de notícias">
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      max-width: 800px;
     }
-
-    header {
-      background: #1a237e;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    #search {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: none;
-    }
-
-    main {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
     .card {
-      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: 0.3s;
     }
-
-    .card:hover {
-      transform: scale(1.02);
+    img {
+      max-width: 100%;
+      height: auto;
     }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card-content h3 {
-      margin-top: 0;
-    }
-
-    .card-content p {
-      color: #555;
-    }
-
-    .read-more {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #1a237e;
+    a {
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .help-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #1a237e;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.2rem;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    .help-box {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      width: 280px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      border-radius: 8px;
+      color: blue;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Notícias Brasil</h1>
-    <input id="search" type="text" placeholder="Buscar...">
-  </header>
-
-  <main id="news-container">
-    <!-- Notícias simuladas -->
-  </main>
-
-  <div class="help-box" id="help-box">
-    <p>Bem-vindo ao seu site de notícias! Aqui você pode exibir conteúdos atualizados automaticamente. Em breve você poderá integrar um sistema real de coleta de dados (scraper).</p>
-  </div>
-  <button class="help-btn" onclick="toggleHelp()">Ajuda</button>
-
-  <script>
-    const noticias = [
-      {
-        titulo: "Brasil avança na produção de energia renovável",
-        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/energia_renovavel.jpg",
-        resumo: "Investimentos em eólica e solar batem recorde em 2025.",
-        link: "#",
-        data: "05/04/2025"
-      },
-      {
-        titulo: "Educação tecnológica cresce nas escolas públicas",
-        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/educacao_tecnologica.jpg",
-        resumo: "Governo amplia acesso a laboratórios e internet de alta velocidade.",
-        link: "#",
-        data: "04/04/2025"
-      },
-      {
-        titulo: "Turismo sustentável atrai visitantes ao Norte do país",
-        imagem: "https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/turismo_norte.jpg",
-        resumo: "Destinos ecológicos e preservação ambiental ganham destaque.",
-        link: "#",
-        data: "03/04/2025"
-      }
-    ];
-
-    const container = document.getElementById("news-container");
-
-    noticias.forEach(noticia => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <img src="${noticia.imagem}" alt="${noticia.titulo}">
-        <div class="card-content">
-          <h3>${noticia.titulo}</h3>
-          <p><small>${noticia.data}</small></p>
-          <p>${noticia.resumo}</p>
-          <a class="read-more" href="${noticia.link}">Leia mais →</a>
+        <div class="card">
+            <h2><a href="noticias/noticia-1-universidade-de-columbia-contrata-36-novos-agentes.html">Universidade de Columbia contrata 36 novos agentes de segurança com poder de prisão dentro do campus | Mundo | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/RiXDZg_SrwY9eEctcF4pO7-H7kk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/B/H/OCxZ3OQjK6GBFyPn648g/ap24117704075774.jpg" /><br /></p>
         </div>
-      `;
-      container.appendChild(card);
-    });
-
-    function toggleHelp() {
-      const help = document.getElementById("help-box");
-      help.style.display = help.style.display === "block" ? "none" : "block";
-    }
-  </script>
-
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-2-cientistas-testam-primeira-soja-editada-geneticame.html">Cientistas testam primeira soja editada geneticamente no Brasil | Jornal Nacional | G1</a></h2>
+            <p>Objetivo é fazer grãos resistirem à seca e ao calor do país. Técnica permite alterar o código genético de um ser vivo, fazendo a chamada edição gênica.  Cientistas testam a primeira soja editada genet</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-3-loteria-federal-resultado-do-concurso-5955-loteria.html">Loteria Federal: resultado do concurso 5955 | Loteria Federal | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/pcLYfXmvyM030B3n34CA2QW_agU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/f/f/41PaWjSGOWo8I7j3uNow/voltantes-federal.jpg" /><br /</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-4-universidade-restaura-imagens-historicas-de-quatro.html">Universidade restaura imagens históricas de quatro décadas do Rio de Janeiro | Jornal Nacional | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/mZJ0Jbvv5t-77RkN3wnmC96xkcM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/T/r/rZf0ssQ0Kn2G2yXPnhAQ/captura-de-tela-2025-04-05-211</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-5-aviao-monomotor-pousa-em-estrada-de-santa-catarina.html">Avião monomotor pousa em estrada de Santa Catarina | Jornal Nacional | G1</a></h2>
+            <p>Pouso de emergência aconteceu na BR-101, após avião apresentar falha no motor. A aeronave pousou em segurança e evitou acidentes com os carros e caminhões que trafegavam pela rodovia. Avião monomotor </p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-6-defensoria-publica-da-uniao-abre-posto-de-atendime.html">Defensoria Pública da União abre posto de atendimento em Tucuruí, sudeste do Pará; veja serviços | Pará | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/_X4VUJUFvaUf6up144EIR5PFprk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/I/2/j8DG7xQ0eAPgK0AZBjkQ/atendimento-1-1-.jpg" /><br /></p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-7-inteligencia-artificial-auxilia-monitoramento-de-3.html">Inteligência artificial auxilia monitoramento de 300 câmeras em 14 rodovias de SP | Jornal Nacional | G1</a></h2>
+            <p>Sistema também está disponível em mais de mil câmeras espalhadas pelo Rio de Janeiro, Paraná, Santa Catarina, Rio Grande do Sul e Mato Grosso do Sul. Inteligência artificial ajuda a garantir segurança</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-8-trabalho-treinos-e-folgas-conheca-isis-a-cadela-da.html">Trabalho, treinos e folgas: conheça 'Ísis', a cadela da PM que tem se destacado em operações na Base Candiru, em Óbidos | Santarém e Região | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/CRi61mHjjeovV0XDyiS-MsmLwCM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/t/A/n3nxq1QbuCWAi31LF3Nw/whatsapp-image-2025-04-05-at-2</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-9-datafolha-publica-pesquisa-com-avaliacao-do-govern.html">Datafolha publica pesquisa com avaliação do governo Lula | Jornal Nacional | G1</a></h2>
+            <p><img src="https://s2-g1.glbimg.com/G_qHIrT6ywb4PX1_5HlJJiB1hQo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/w/4/ukYfZWThi16W9cHj3i6Q/captura-de-tela-2025-04-05-210</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-10-isa-pereira-nunes-nao-existe-torcida-igual-a-do-br.html">Isa Pereira Nunes "não existe torcida igual à do Brasil" - 05/04/2025 - Músculo - Folha</a></h2>
+            <p></p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-11-moradores-de-angra-dos-reis-rj-relatam-caos-apos-t.html">Moradores de Angra dos Reis (RJ) relatam caos após temporal</a></h2>
+            <p><img align="left" src="https://conteudo.imguol.com.br/c/noticias/a0/2025/04/05/mulher-observa-chegada-de-bote-no-bairro-parque-mambucaba-em-angra-dos-reis-rj-1743900391819_v2_142x100.jpg" />  Ilhados </p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-12-memphis-critica-var-e-alfineta-cbf-preferem-fazer-.html">Memphis critica VAR e alfineta CBF: 'Preferem fazer regras como a de não subir na bola'</a></h2>
+            <p>Memphis critica VAR e alfineta CBF: 'Preferem fazer regras como a de não subir na bola'</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-13-vitima-de-acidente-emociona-com-desabafo-sobre-lut.html">Vítima de acidente emociona com desabafo sobre luta para não amputar perna: "Morri e vivi"</a></h2>
+            <p>Apesar da luta, que ainda não terminou, Valdenice foi surpreendida com a ajuda de Renato Ambrósio, que possibilitou que a mulher tivesse atendimento médico rápido e particular</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-14-bc-apresenta-resultados-do-lift-e-lanca-novo-ciclo.html">BC apresenta resultados do LIFT e lança novo ciclo da iniciativa em evento no dia 30 de abril | Band</a></h2>
+            <p>BC apresenta resultados do LIFT e lança novo ciclo da iniciativa em evento no dia 30 de abril</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-15-redetv-em-rede-com-voce.html">RedeTV! Em rede com vocę</a></h2>
+            <p>Concurso 2.849 teve uma única ganhadora; próxima edição pode pagar R$ 25 milhões</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-16-diaz-festeja-atuacao-do-corinthians-mas-detona-cal.html">Díaz festeja atuação do Corinthians, mas detona calendário e mira reabilitação na Sul-Americana</a></h2>
+            <p>Na terça-feira, os corintianos viajam até a Colômbia para enfrentar o América de Cali pela segunda rodada</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-17-arnold-classic-goodvito-vence-peres-e-vai-para-o-o.html">Arnold Classic: Goodvito vence Peres e vai para o Olympia - 05/04/2025 - Músculo - Folha</a></h2>
+            <p></p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-18-redetv-em-rede-com-voce.html">RedeTV! Em rede com vocę</a></h2>
+            <p>Mais de 300 pessoas estão desalojadas; veja onde e como doar para ajudar as vítimas</p>
+        </div>
+        
+        <div class="card">
+            <h2><a href="noticias/noticia-19-londres-acusa-israel-de-impedir-entrada-de-dois-pa.html">Londres acusa Israel de impedir entrada de dois parlamentares britânicos</a></h2>
+            <p>O secretário britânico de Relações Exteriores, David Lammy, denunciou neste sábado (5) que Israel deteve e impediu a entrada no país de dois legisladores, o que descreveu como "inaceitável" e muito pr</p>
+        </div>
+        
 </body>
 </html>
